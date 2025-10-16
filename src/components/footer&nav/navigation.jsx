@@ -1,47 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react';  // 🔥 Tangira ubu
 import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Biroza muri backend
 
-  const navItems = [
-    { 
-      path: '/', 
-      label: 'Home', 
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-        </svg>
-      )
-    },
-    { 
-      path: '/about', 
-      label: 'About', 
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      )
-    },
-    { 
-      path: '/patient-form', 
-      label: 'Patient Registration', 
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
-      )
-    },
-    { 
-      path: '/contact', 
-      label: 'Contact', 
-      icon: (
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      )
-    }
+  const navItems = isLoggedIn ? [
+    { path: '/dashboard', label: 'Ahabanza', icon: '🏠' },
+    { path: '/family', label: 'Umuryango', icon: '👨‍👩‍👧‍👦' },
+    { path: '/appointments', label: 'Ibitego', icon: '📅' },
+    { path: '/records', label: 'Amakuru', icon: '📋' }
+  ] : [
+    { path: '/', label: 'Ahabanza', icon: '🏠' },
+    { path: '/about', label: 'Abo tubanye', icon: 'ℹ️' },
+    { path: '/login', label: 'Injira', icon: '🔐' },
+    { path: '/contact', label: 'Twandikire', icon: '📞' }
   ];
 
   const toggleMobileMenu = () => {
@@ -49,22 +23,22 @@ const Navigation = () => {
   };
 
   return (
-  <nav className="bg-[#2563EB] shadow-lg fixed top-0 left-0 w-full z-50">
+    <nav className="bg-[#2563EB] shadow-lg fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo with Icon */}
+          {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center text-white text-xl font-bold hover:text-gray-200 transition-colors">
               <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
               </svg>
-              MediCare HMS
+              Sistema y'Ubuzima
             </Link>
           </div>
 
           {/* Desktop Navigation Items */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+          <div className="hidden md:flex items-center space-x-4">
+            <div className="flex items-baseline space-x-4">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -80,10 +54,44 @@ const Navigation = () => {
                 </Link>
               ))}
             </div>
+
+            {/* Login/Logout Button */}
+            {isLoggedIn ? (
+              <button 
+                onClick={() => setIsLoggedIn(false)}
+                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                Sohoka
+              </button>
+            ) : (
+              <Link 
+                to="/login"
+                className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                Injira
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            {/* Login/Logout Mobile */}
+            {isLoggedIn ? (
+              <button 
+                onClick={() => setIsLoggedIn(false)}
+                className="text-white p-2 rounded-md hover:bg-[#1E40AF] transition-colors"
+              >
+                Sohoka
+              </button>
+            ) : (
+              <Link 
+                to="/login"
+                className="text-white p-2 rounded-md hover:bg-[#1E40AF] transition-colors"
+              >
+                Injira
+              </Link>
+            )}
+            
             <button
               onClick={toggleMobileMenu}
               className="text-white hover:text-gray-200 focus:outline-none focus:text-white p-2"
