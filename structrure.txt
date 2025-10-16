@@ -1,0 +1,39 @@
+
+  -main.jsx
+  -index.css
+  -App.jsx
+  -App.css
+  -assets/
+  -components/
+    -footer&nav/
+      -footer.jsx
+      -navigation.jsx
+    -forms/
+      -patienceform.jsx
+    -Links/
+      -about.jsx
+      -contact.jsx
+      -home.jsx
+
+src/
+  -main.jsx
+  -index.css
+  -App.jsx
+  -App.css
+  -assets/
+  -components/
+    -footer&nav/
+      -footer.jsx
+      -navigation.jsx
+    -forms/
+      -patientform.jsx
+    -Links/
+      -about.jsx
+      -contact.jsx
+      -home.jsx
+
+Notes:
+- The structure above reflects the current files present under `src/components`.
+- No duplicate files were found to automatically remove. If you want me to delete files with different casing or old backups, list them or confirm and I'll remove them.
+
+
