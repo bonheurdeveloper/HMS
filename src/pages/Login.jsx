@@ -11,8 +11,12 @@ const Login = () => {
     console.log('Indangamuntu:', nationalId);
     
     // Simulate successful login
-    if (nationalId.length >= 5) {
+    if (nationalId.length ==11) {
       navigate('/dashboard');
+    }
+    //igihe imibare yiranga muntu ituzuye
+        else{
+      console.log("Imibare yirangamuntu igomba kuba ari 11 (cuminumwe)")
     }
   };
 
@@ -41,7 +45,7 @@ const Login = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
               placeholder="Shyiramo numero y'Indangamuntu"
               required
-            />
+                         />
           </div>
 
           <button

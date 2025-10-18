@@ -1,8 +1,8 @@
 // App.js
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navigation from './components/footer&nav/Navigation';
-import Footer from './components/footer&nav/Footer';
+import Navigation from './pages/navigation';
+import Footer from './pages/footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
