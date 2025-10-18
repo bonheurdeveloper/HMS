@@ -1,7 +1,6 @@
 import React from 'react';  // 🔥 Tangira React
-import { Link } from 'react-router-dom';  // 🔥 Tangira Link
-
-const Home = () => {
+import { Link } from 'react-router-dom';  // 🔥 Tangira Lin
+function  Home (){
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
