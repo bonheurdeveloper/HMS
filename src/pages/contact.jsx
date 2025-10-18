@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';  // 🔥 Tangira Link
 
-const Contact = () => {
+function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

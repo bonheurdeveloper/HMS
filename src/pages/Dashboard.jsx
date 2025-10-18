@@ -1,7 +1,7 @@
 import React from 'react';  // 🔥 Tangira ubu
 import { Link } from 'react-router-dom';
 
-const Dashboard = () => {
+function Dashboard () {
   // Ibi bizava mu backend
   const familyData = {
     headOfFamily: "Jean de Dieu",
